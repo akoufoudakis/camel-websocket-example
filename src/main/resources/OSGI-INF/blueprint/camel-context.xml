@@ -1,0 +1,9 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/blueprint">
+        <routeBuilder ref="webSocketRoute"/>
+    </camelContext>
+
+    <bean id="webSocketRoute" class="io.giraffa.websocketexample.WebSocketRouteBuilder"/>
+
+</blueprint>

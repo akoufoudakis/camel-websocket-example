@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function() {
+            var webSocket = new WebSocket("ws://localhost:9000/something");
+            webSocket.onmessage = function(event) {
+                var divText = $("#websocketFeedback").html();
+                if(divText != null && divText.length > 0) {
+                    divText = divText.concat(event.data).concat("<br/>");
+                } else {
+                    divtTtext = divText.concat(event.data).concat("<br/>");
+                }
+                $("#websocketFeedback").html(divText);
+            }
+
+
+
+            $("#disconnectBtn").click(function() {
+               webSocket.close()
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <div id="websocketFeedback" style="background-color:#fff0b2; color: #e68a00; width: 30em; height: 30em;
+        margin-bottom: 3em;">
+
+        </div>
+        <input type="button" value="Disconnect" id="disconnectBtn">
+    </div>
+</body>
+</html>
